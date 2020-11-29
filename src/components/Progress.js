@@ -10,6 +10,9 @@ const square = 150;
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
+    backgroundColor: 'green',
+    borderRadius: '3px',
+    border: '1px solid darkgrey',
   },
   left: {
     position: 'relative',
@@ -19,7 +22,6 @@ const useStyles = makeStyles({
   },
   right: {
     position: 'relative',
-    color: 'green',
     maxHeight: `${square}px`,
     maxWidth: `${square}px`,
   },
@@ -27,32 +29,35 @@ const useStyles = makeStyles({
 
 const Progress = (props) => {
   const classes = useStyles();
-  const [days, setDays] = useState(0);
-  const [totalHours, setTotalHours] = useState(0);
+  //   const [days, setDays] = useState(0);
+  const [totalHours, setTotalHours] = useState(860);
   //   const [seconds, setSeconds] = useState(0);
 
-  const units = 200 / 35;
+  const units = 200 / 860;
 
   useEffect(() => {
     const distanceMeter = setInterval(() => {
       const now = new Date().getTime();
       const distance = landingTime - now;
 
-      setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
+      //   setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
       setTotalHours(Math.floor(distance / (1000 * 60 * 60)));
 
       //   setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
-    }, 1000);
-  }, [days]);
+    }, 1000 * 90);
+  }, [totalHours]);
 
   return (
-    <Box className={classes.root}>
+    <Box
+      className={classes.root}
+      style={{ backgroundColor: totalHours <= 12 ? 'green' : '#D9AE89' }}
+    >
       <Typography variant="body1"></Typography>
       <Grid container>
         <Grid item xs={2}>
           <Box
             className={classes.left}
-            style={{ right: `${days * units - 200}%` }}
+            style={{ right: `${totalHours * units - 200}%` }}
           >
             <img
               src="https://operisstorage.s3.us-east-2.amazonaws.com/JustiAlpha.png"
@@ -63,7 +68,7 @@ const Progress = (props) => {
         <Grid item xs={2}>
           <Box
             className={classes.right}
-            style={{ right: `-${days * units + 200}%` }}
+            style={{ right: `-${totalHours * units + 200}%` }}
           >
             <img
               src="https://operisstorage.s3.us-east-2.amazonaws.com/KennyAlpha.png"

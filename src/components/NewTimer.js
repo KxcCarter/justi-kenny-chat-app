@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
 
 const landingTime = new Date('January 3, 2021 19:45:00').getTime();
 
@@ -26,10 +27,30 @@ const NewTimer = (props) => {
 
   return (
     <React.Fragment>
-      <Typography variant="h2">
-        {days} days {hours} hours {minutes} minutes {seconds} seconds
-      </Typography>
-      <Typography variant="h4"> until Justi and Kenny meet!</Typography>
+      <Grid container>
+        <Grid item xs={12} md={7}>
+          <Typography variant="h2" gutterBottom>
+            {days} days
+          </Typography>
+        </Grid>
+        <Grid item xs={6} md={5}>
+          <Typography variant="h4">{hours} hours</Typography>
+        </Grid>
+        <Grid item xs={6} md={4}>
+          {' '}
+          <Typography variant="h5">{minutes} minutes</Typography>
+        </Grid>
+        <Grid item xs={5} md={4}>
+          {' '}
+          <Typography variant="h6">{seconds} seconds</Typography>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography variant="h6" gutterBottom>
+            {' '}
+            until Justi and Kenny meet!
+          </Typography>
+        </Grid>
+      </Grid>
     </React.Fragment>
   );
 };
