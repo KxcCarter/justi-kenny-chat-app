@@ -34,17 +34,22 @@ const Progress = (props) => {
   //   const [seconds, setSeconds] = useState(0);
 
   const units = 200 / 860;
+  //   const units = 200 / 60;
 
   useEffect(() => {
-    const distanceMeter = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = landingTime - now;
+    const now = new Date().getTime();
+    const distance = landingTime - now;
 
+    const distanceMeter = setInterval(() => {
       //   setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
       setTotalHours(Math.floor(distance / (1000 * 60 * 60)));
 
       //   setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
     }, 5000);
+
+    if (distance < 1000 * 60 * 60) {
+      return clearInterval(distanceMeter);
+    }
   }, [totalHours]);
 
   return (

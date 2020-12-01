@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: '#F2E3D525',
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     backgroundColor: '#F2E3D5',
-    padding: theme.spacing(6),
+    // padding: theme.spacing(6),
   },
   header: {
     backgroundColor: theme.palette.info.main,
@@ -89,7 +89,7 @@ export default function Album() {
             <NewTimer />
             <Progress />
             <Typography
-              variant="h6"
+              variant="body2"
               align="center"
               color="textSecondary"
               paragraph
@@ -97,14 +97,13 @@ export default function Album() {
               As time progresses, our photos will get closer and closer until
               finally you are here!
             </Typography>
+            <Box className={classes.gif}>
+              <GiphyBox tag="cat" />
+            </Box>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Box className={classes.gif}>
-            <GiphyBox tag="cat" />
-          </Box>
-        </Container>
+        {/* End hero unit */}
+        <Container className={classes.cardGrid} maxWidth="md"></Container>
       </main>
       {/* Footer */}
       <footer className={classes.footer}>

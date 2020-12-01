@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 const GiphyBox = ({ tag }) => {
   const [gif, setGif] = useState(null);
   const [secretSearch, setSecretSearch] = useState(false);
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState('cat');
 
   useEffect(() => {
     getGifs(tag);
@@ -17,16 +17,17 @@ const GiphyBox = ({ tag }) => {
   const handleDblClick = () => {
     console.log('you rang?');
     setSecretSearch(!secretSearch);
-    console.log(secretSearch);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     getGifs(term);
+    setTerm('');
+    setSecretSearch(false);
   };
 
   const getGifs = async (tag = 'cat') => {
-    const { data } = await axios.get('http://api.giphy.com/v1/gifs/random', {
+    const { data } = await axios.get('https://api.giphy.com/v1/gifs/random', {
       params: {
         api_key: KEYS.giphy,
         rating: 'g',
@@ -55,6 +56,7 @@ const GiphyBox = ({ tag }) => {
                 onChange={(event) => {
                   setTerm(event.target.value);
                 }}
+                onBlur={handleSubmit}
               />
             </form>
           )}
