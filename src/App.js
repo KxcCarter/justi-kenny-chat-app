@@ -1,6 +1,9 @@
 import React from 'react';
-import Album from './components/MainView';
+
+// MUI
+import MainView from './components/MainView';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+// ***
 
 const theme = createMuiTheme({
   typography: {
@@ -35,7 +38,7 @@ const App = (props) => {
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
-        <Album />
+        <MainView />
       </ThemeProvider>
     </React.Fragment>
   );

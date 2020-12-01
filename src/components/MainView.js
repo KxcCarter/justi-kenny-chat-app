@@ -14,6 +14,8 @@ import { Box } from '@material-ui/core';
 import NewTimer from './NewTimer';
 import Progress from './Progress';
 import GiphyBox from './GiphyBox';
+import ChatBox from './ChatBox';
+// import TestChat from './TestChat';
 
 function Copyright() {
   return (
@@ -61,12 +63,12 @@ const useStyles = makeStyles((theme) => ({
   header: {
     backgroundColor: theme.palette.info.main,
   },
-  gif: {
+  center: {
     textAlign: 'center',
   },
 }));
 
-export default function Album() {
+export default function MainView() {
   const classes = useStyles();
 
   return (
@@ -75,7 +77,6 @@ export default function Album() {
       <Container maxWidth="md">
         <AppBar position="relative" className={classes.header}>
           <Toolbar>
-            {/* <CameraIcon className={classes.icon} /> */}
             <Typography variant="h6" color="inherit" noWrap>
               Justi and Kenny Meeting Countdown!
             </Typography>
@@ -97,13 +98,17 @@ export default function Album() {
               As time progresses, our photos will get closer and closer until
               finally you are here!
             </Typography>
-            <Box className={classes.gif}>
+            <Box className={classes.center}>
               <GiphyBox tag="cat" />
             </Box>
           </Container>
         </div>
         {/* End hero unit */}
-        <Container className={classes.cardGrid} maxWidth="md"></Container>
+        <Container className={classes.cardGrid} maxWidth="sm">
+          <Box className={classes.center}>
+            <ChatBox />
+          </Box>
+        </Container>
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
