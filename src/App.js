@@ -6,7 +6,6 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: [
       'Paprika',
-      'Sonsie One',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
@@ -18,6 +17,9 @@ const theme = createMuiTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
+    body2: {
+      fontFamily: ['Raleway', 'sans-serif'].join(','),
+    },
   },
   palette: {
     info: {
