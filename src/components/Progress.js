@@ -44,7 +44,7 @@ const Progress = (props) => {
       setTotalHours(Math.floor(distance / (1000 * 60 * 60)));
 
       //   setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
-    }, 1000 * 90);
+    }, 5000);
   }, [totalHours]);
 
   return (

@@ -7,12 +7,13 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { Box } from '@material-ui/core';
 
 //
 
 import NewTimer from './NewTimer';
 import Progress from './Progress';
-import { Box } from '@material-ui/core';
+import GiphyBox from './GiphyBox';
 
 function Copyright() {
   return (
@@ -71,14 +72,16 @@ export default function Album() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative" className={classes.header}>
-        <Toolbar>
-          {/* <CameraIcon className={classes.icon} /> */}
-          <Typography variant="h6" color="inherit" noWrap>
-            Justi and Kenny Meeting Countdown!
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Container maxWidth="md">
+        <AppBar position="relative" className={classes.header}>
+          <Toolbar>
+            {/* <CameraIcon className={classes.icon} /> */}
+            <Typography variant="h6" color="inherit" noWrap>
+              Justi and Kenny Meeting Countdown!
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Container>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -99,10 +102,7 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Box className={classes.gif}>
-            <img
-              src="https://media.giphy.com/media/TgKEjjz1lzjmEsuz80/giphy.gif"
-              alt="dancing cat!"
-            />
+            <GiphyBox tag="cat" />
           </Box>
         </Container>
       </main>

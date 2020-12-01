@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 const landingTime = new Date('January 3, 2021 19:45:00').getTime();
 
 const NewTimer = (props) => {
-  const [timeLeft, setTimeLeft] = useState(null);
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
