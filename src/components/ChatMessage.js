@@ -12,19 +12,23 @@ const useStyles = makeStyles((theme) => ({
   message: {
     display: 'flex',
     alignItems: 'center',
+    lineHeight: '24px',
   },
   sent: {
     flexDirection: 'row-reverse',
     color: 'black',
     background: '#0b93f675',
     alignSelf: 'flex-end',
-    padding: '2px',
+    padding: '3px',
     borderRadius: '10px',
     margin: '2px 0',
   },
   received: {
     background: '#e5e5ea',
     color: 'black',
+    padding: '2px',
+    borderRadius: '10px',
+    margin: '2px 0',
   },
   avatar: {
     width: theme.spacing(3),
