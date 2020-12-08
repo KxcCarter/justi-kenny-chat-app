@@ -43,7 +43,8 @@ const GiphyBox = ({ tag }) => {
           {secretSearch && (
             <form onSubmit={handleSubmit}>
               <label htmlFor="secretSearch">
-                You found a secret! <span>🤫</span>{' '}
+                You found a secret! <span>🤫</span> Search for other gifs!{' '}
+                <span>🔍</span>
               </label>
               <TextField
                 variant="outlined"
