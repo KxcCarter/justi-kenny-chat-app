@@ -15,7 +15,7 @@ import SignOut from './SignOut';
 
 // ***
 firebase.initializeApp({
-  apiKey: process.env.firebase,
+  apiKey: process.env.REACT_APP_firebase,
   authDomain: 'justikennycountdown.firebaseapp.com',
   databaseURL: 'https://justikennycountdown.firebaseio.com',
   projectId: 'justikennycountdown',

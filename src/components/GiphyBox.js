@@ -28,7 +28,7 @@ const GiphyBox = ({ tag }) => {
   const getGifs = async (tag = 'cat') => {
     const { data } = await axios.get('https://api.giphy.com/v1/gifs/random', {
       params: {
-        api_key: process.env.giphy,
+        api_key: process.env.REACT_APP_giphy,
         rating: 'g',
         tag: tag,
       },
