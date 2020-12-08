@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import KEYS from '../KEYS';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -17,7 +15,7 @@ import SignOut from './SignOut';
 
 // ***
 firebase.initializeApp({
-  apiKey: KEYS.firebase,
+  apiKey: process.env.firebase,
   authDomain: 'justikennycountdown.firebaseapp.com',
   databaseURL: 'https://justikennycountdown.firebaseio.com',
   projectId: 'justikennycountdown',

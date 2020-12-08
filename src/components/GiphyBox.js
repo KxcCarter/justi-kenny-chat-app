@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import KEYS from '../KEYS';
 
 // MUI
 import TextField from '@material-ui/core/TextField';
@@ -29,7 +28,7 @@ const GiphyBox = ({ tag }) => {
   const getGifs = async (tag = 'cat') => {
     const { data } = await axios.get('https://api.giphy.com/v1/gifs/random', {
       params: {
-        api_key: KEYS.giphy,
+        api_key: process.env.giphy,
         rating: 'g',
         tag: tag,
       },
