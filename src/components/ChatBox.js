@@ -3,7 +3,7 @@ import React from 'react';
 import ChatRoom from './ChatRoom';
 import SignInWithGoogle from './SignInWithGoogle';
 // MUI
-import { Box, Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 //
 import firebase from 'firebase/app';
