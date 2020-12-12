@@ -17,7 +17,8 @@ const useStyles = makeStyles({
   root: {
     borderRadius: '3px',
     border: '2px solid darkgrey',
-    maxWidth: '350px',
+    maxWidth: '80%',
+    minWidth: '300px',
     padding: '5px',
     margin: 'auto',
   },

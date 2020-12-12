@@ -6,7 +6,7 @@ import 'firebase/auth';
 
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, TextField } from '@material-ui/core';
+import { Box, TextField, Fab, Divider } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
 //
@@ -73,20 +73,22 @@ const ChatRoom = (props) => {
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
       </div>
-
-      <form onSubmit={sendMessage}>
-        <TextField
-          className={classes.input}
-          size="small"
-          variant="outlined"
-          placeholder="Say hello!"
-          value={formValue}
-          onChange={(e) => setFormValue(e.target.value)}
-        />
-        <Button variant="contained" type="submit" className={classes.button}>
-          <SendIcon />
-        </Button>
-      </form>
+      <Divider variant="fullWidth" />
+      <Box pt={2}>
+        <form onSubmit={sendMessage}>
+          <TextField
+            className={classes.input}
+            size="small"
+            variant="outlined"
+            placeholder="Say hello!"
+            value={formValue}
+            onChange={(e) => setFormValue(e.target.value)}
+          />
+          <Fab size="small" type="submit" className={classes.button}>
+            <SendIcon />
+          </Fab>
+        </form>
+      </Box>
       <SignOut />
     </React.Fragment>
   );
