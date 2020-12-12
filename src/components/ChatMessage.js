@@ -11,10 +11,12 @@ import 'firebase/auth';
 const useStyles = makeStyles((theme) => ({
   message: {
     display: 'flex',
-    // alignItems: 'center',
+    alignItems: 'center',
     lineHeight: '24px',
   },
   sent: {
+    display: 'flex',
+    alignItems: 'center',
     flexDirection: 'row-reverse',
     color: 'black',
     background: '#0b93f675',
@@ -24,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '2px 0',
   },
   received: {
-    background: '#e5e5ea',
+    display: 'flex',
+    alignItems: 'center',
+    background: '#F2E3D5',
     color: 'black',
     padding: '2px',
     borderRadius: '10px',
@@ -33,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     width: theme.spacing(3),
     height: theme.spacing(3),
+    margin: '5px',
   },
 }));
 
@@ -45,11 +50,9 @@ function ChatMessage(props) {
   const name = auth.currentUser.displayName;
 
   return (
-    <div className={classes.message}>
+    <div className={messageClass}>
       <Avatar className={classes.avatar} src={photoURL} alt={name} />
-      <Typography variant="body2" className={messageClass}>
-        {text}
-      </Typography>
+      <Typography variant="body2">{text}</Typography>
     </div>
   );
 }

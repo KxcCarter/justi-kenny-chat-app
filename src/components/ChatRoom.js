@@ -44,7 +44,10 @@ const ChatRoom = (props) => {
   const firestore = firebase.firestore();
 
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(50);
+  // original with limit on messages
+  //   const query = messagesRef.orderBy('createdAt').limit(50);
+  // no limit on messages
+  const query = messagesRef.orderBy('createdAt');
 
   const [messages] = useCollectionData(query, { idField: 'id' });
   const [formValue, setFormValue] = useState('');
@@ -66,7 +69,7 @@ const ChatRoom = (props) => {
 
   return (
     <React.Fragment>
-      <div>
+      <div style={{ maxHeight: '500px', overflow: 'scroll' }}>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
       </div>
