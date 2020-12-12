@@ -11,7 +11,7 @@ import 'firebase/auth';
 const useStyles = makeStyles((theme) => ({
   message: {
     display: 'flex',
-    alignItems: 'center',
+    // alignItems: 'center',
     lineHeight: '24px',
   },
   sent: {
@@ -41,7 +41,7 @@ function ChatMessage(props) {
   const auth = firebase.auth();
   const { text, uid, photoURL } = props.message;
   const messageClass =
-    uid === auth.currentUser.uid ? classes.sent : classes.recieved;
+    uid === auth.currentUser.uid ? classes.sent : classes.received;
   const name = auth.currentUser.displayName;
 
   return (
