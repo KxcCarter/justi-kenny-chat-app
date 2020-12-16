@@ -16,19 +16,11 @@ import Progress from './Progress';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
 // import TestChat from './TestChat';
-import CustomS3Uploader from './CustomS3Uploader';
 
 function Copyright() {
-  const [secret, setSecret] = useState(false);
   return (
     <React.Fragment>
-      {secret && <CustomS3Uploader />}
-      <Typography
-        variant="body2"
-        color="textSecondary"
-        align="center"
-        onClick={() => setSecret(!secret)}
-      >
+      <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://github.com/KxcCarter">
           Kenneth Carter
@@ -98,9 +90,9 @@ export default function MainView() {
         <div className={classes.heroContent}>
           <Container maxWidth="md">
             <NewTimer />
-            <Typography variant="body1" align="center" gutterBottom>
-              <span>🎊</span> I have a cool surprise coming soon!!{' '}
-              <span>🎊</span>
+            <Typography variant="subtitle2" align="center" gutterBottom>
+              <span>📷</span> Click on one of our photos and see what happens!{' '}
+              <span>📷</span>
             </Typography>
             <Progress />
             <Typography

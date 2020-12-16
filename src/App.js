@@ -36,14 +36,21 @@ const theme = createMuiTheme({
       fontFamily: headingFontFamily,
       fontSize: '1.2rem',
     },
+    subtitle2: {
+      fontSize: '12px',
+    },
   },
   palette: {
+    primary: {
+      main: '#89B0C9',
+    },
     info: {
       main: '#BF895A',
       light: '#D9AE89',
     },
     background: {
       main: '#F2E3D5',
+      secondary: '#D9C5AD',
     },
   },
 });

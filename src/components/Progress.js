@@ -68,8 +68,6 @@ const Progress = (props) => {
 
     setJustiPhoto(data.Items[0].url);
     setKennyPhoto(data.Items[1].url);
-
-    console.table(data.Items);
   };
 
   return (

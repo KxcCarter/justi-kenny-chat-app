@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import CustomS3Uploader from './CustomS3Uploader';
@@ -38,7 +38,6 @@ export default function NewSelfieModal(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [uploadFinished, setUploadFinished] = useState(false);
-  const [fileUrl, setFileUrl] = useState('');
 
   const handleOpen = () => {
     setOpen(true);
@@ -48,37 +47,13 @@ export default function NewSelfieModal(props) {
     setOpen(false);
   };
 
-  const handleFinishedUpload = (info) => {
-    console.log('Access it on s3 at', info.fileUrl);
-    setFileUrl(info.fileUrl);
+  useEffect(() => {}, [open]);
 
-    setUploadFinished(true);
-  };
-
-  const submitPhotoToProcessing = () => {
-    // axios({
-    //   method: 'PUT',
-    //   url: '/photos',
-    //   body: {
-    //     fileUrl,
-    //     person: props.person,
-    //   },
-    // });
-
-    axios.post('/photos', {
-      fileUrl,
-      person: props.person,
-    });
-
-    console.log({ fileUrl });
-
-    props.getPhotos();
-
-    handleClose();
-  };
-
-  const revertToOriginalImage = () => {
-    axios.put('/photos/original', { person: props.person });
+  const revertToOriginalImage = async () => {
+    await axios.put(
+      `https://t4qxti3dak.execute-api.us-east-1.amazonaws.com/Dev`,
+      { person: props.person }
+    );
     props.getPhotos();
     handleClose();
   };
@@ -95,9 +70,7 @@ export default function NewSelfieModal(props) {
 
       <Box p={2}>
         <ButtonGroup variant="contained">
-          {uploadFinished && (
-            <Button onClick={submitPhotoToProcessing}>use this photo</Button>
-          )}
+          {uploadFinished && <Button>use this photo</Button>}
           <Button onClick={revertToOriginalImage}>
             revert to original image
           </Button>
@@ -123,9 +96,12 @@ export default function NewSelfieModal(props) {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <CustomS3Uploader handleClose={handleClose} />
-          </div>
+          <CustomS3Uploader
+            handleClose={handleClose}
+            person={props.person}
+            revertToOriginalImage={revertToOriginalImage}
+          />
+
           {/* {body} */}
         </Fade>
       </Modal>
