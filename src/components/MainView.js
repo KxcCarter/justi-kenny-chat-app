@@ -16,19 +16,13 @@ import Progress from './Progress';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
 // import TestChat from './TestChat';
+import CustomS3Uploader from './CustomS3Uploader';
 
 function Copyright() {
   const [secret, setSecret] = useState(false);
   return (
     <React.Fragment>
-      {secret && (
-        <div>
-          <label htmlFor="file">
-            <span>🎈</span>
-          </label>
-          <input type="file" id="file" />
-        </div>
-      )}
+      {secret && <CustomS3Uploader />}
       <Typography
         variant="body2"
         color="textSecondary"
