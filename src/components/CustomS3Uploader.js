@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Box, Button, ButtonGroup, Input, Typography } from '@material-ui/core';
 
 const CustomS3Uploader = (props) => {
   const [image, setImage] = useState(null);
@@ -66,25 +67,30 @@ const CustomS3Uploader = (props) => {
 
   return (
     <React.Fragment>
-      <h1>Custom S3 Uploader Test</h1>
+      <Typography variant="body1">Upload a new selfie!</Typography>
+
       {!image ? (
         <div>
           <h2>Select an image</h2>
-          <input type="file" onChange={onFileChange} />
+
+          <Input type="file" accepts="image/*" onChange={onFileChange} />
+          <Button onClick={props.handleClose}>Cancel</Button>
         </div>
       ) : (
         <div>
-          <img src={image} alt="this is your new avatar" />
+          <img src={image} alt="this will be your new avatar" />
           {!uploadURL && (
-            <div>
-              <button onClick={removeImage}>Remove image</button>
-              <button onClick={uploadImage}>Upload image</button>
-            </div>
+            <Box>
+              <ButtonGroup variant="contained">
+                <Button onClick={removeImage}>Remove image</Button>
+                <Button onClick={uploadImage}>Upload image</Button>
+              </ButtonGroup>
+            </Box>
           )}
         </div>
       )}
 
-      {uploadURL && <h2>Success! Image uploaded to bucket.</h2>}
+      {uploadURL && <h2>Success! Image uploaded!</h2>}
     </React.Fragment>
   );
 };

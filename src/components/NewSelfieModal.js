@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import CustomS3Uploader from './CustomS3Uploader';
+
 //
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, Modal, Box, Input } from '@material-ui/core';
@@ -121,8 +123,10 @@ export default function NewSelfieModal(props) {
         }}
       >
         <Fade in={open}>
-          {/* <div className={classes.paper}></div> */}
-          {body}
+          <div className={classes.paper}>
+            <CustomS3Uploader handleClose={handleClose} />
+          </div>
+          {/* {body} */}
         </Fade>
       </Modal>
     </div>
