@@ -98,6 +98,10 @@ export default function MainView() {
         <div className={classes.heroContent}>
           <Container maxWidth="md">
             <NewTimer />
+            <Typography variant="body1" align="center" gutterBottom>
+              <span>🎊</span> I have a cool surprise coming soon!!{' '}
+              <span>🎊</span>
+            </Typography>
             <Progress />
             <Typography
               variant="body2"
