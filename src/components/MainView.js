@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,17 +16,27 @@ import Progress from './Progress';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
 // import TestChat from './TestChat';
+import CustomS3Uploader from './CustomS3Uploader';
 
 function Copyright() {
+  const [secret, setSecret] = useState(false);
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Kenneth Carter
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
+    <React.Fragment>
+      {secret && <CustomS3Uploader />}
+      <Typography
+        variant="body2"
+        color="textSecondary"
+        align="center"
+        onClick={() => setSecret(!secret)}
+      >
+        {'Copyright © '}
+        <Link color="inherit" href="https://github.com/KxcCarter">
+          Kenneth Carter
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    </React.Fragment>
   );
 }
 
@@ -61,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(6),
   },
   header: {
-    backgroundColor: theme.palette.info.main,
+    backgroundColor: theme.palette.info.light,
   },
   center: {
     textAlign: 'center',
@@ -76,9 +86,9 @@ export default function MainView() {
       <CssBaseline />
       <Container maxWidth="md">
         <AppBar position="relative" className={classes.header}>
-          <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
-              Justi and Kenny Meeting Countdown!
+          <Toolbar style={{ margin: 'auto' }}>
+            <Typography variant="subtitle1" color="inherit" align="center">
+              Countdown to when Justi and Kenny meet! <span>⏳</span>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -88,6 +98,10 @@ export default function MainView() {
         <div className={classes.heroContent}>
           <Container maxWidth="md">
             <NewTimer />
+            <Typography variant="body1" align="center" gutterBottom>
+              <span>🎊</span> I have a cool surprise coming soon!!{' '}
+              <span>🎊</span>
+            </Typography>
             <Progress />
             <Typography
               variant="body2"

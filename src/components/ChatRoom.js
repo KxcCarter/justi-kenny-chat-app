@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
-import KEYS from '../KEYS';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, TextField } from '@material-ui/core';
+import { Box, TextField, Fab, Divider } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
 //
@@ -17,7 +15,7 @@ import SignOut from './SignOut';
 
 // ***
 firebase.initializeApp({
-  apiKey: KEYS.firebase,
+  apiKey: process.env.REACT_APP_firebase,
   authDomain: 'justikennycountdown.firebaseapp.com',
   databaseURL: 'https://justikennycountdown.firebaseio.com',
   projectId: 'justikennycountdown',
@@ -46,7 +44,10 @@ const ChatRoom = (props) => {
   const firestore = firebase.firestore();
 
   const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  // original with limit on messages
+  //   const query = messagesRef.orderBy('createdAt').limit(50);
+  // no limit on messages
+  const query = messagesRef.orderBy('createdAt');
 
   const [messages] = useCollectionData(query, { idField: 'id' });
   const [formValue, setFormValue] = useState('');
@@ -68,24 +69,26 @@ const ChatRoom = (props) => {
 
   return (
     <React.Fragment>
-      <div>
+      <div style={{ maxHeight: '500px', overflow: 'scroll' }}>
         {messages &&
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
       </div>
-
-      <form onSubmit={sendMessage}>
-        <TextField
-          className={classes.input}
-          size="small"
-          variant="outlined"
-          placeholder="Say hello!"
-          value={formValue}
-          onChange={(e) => setFormValue(e.target.value)}
-        />
-        <Button variant="contained" type="submit" className={classes.button}>
-          <SendIcon />
-        </Button>
-      </form>
+      <Divider variant="fullWidth" />
+      <Box pt={2}>
+        <form onSubmit={sendMessage}>
+          <TextField
+            className={classes.input}
+            size="small"
+            variant="outlined"
+            placeholder="Say hello!"
+            value={formValue}
+            onChange={(e) => setFormValue(e.target.value)}
+          />
+          <Fab size="small" type="submit" className={classes.button}>
+            <SendIcon />
+          </Fab>
+        </form>
+      </Box>
       <SignOut />
     </React.Fragment>
   );

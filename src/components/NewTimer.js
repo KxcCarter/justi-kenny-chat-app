@@ -11,7 +11,7 @@ const NewTimer = (props) => {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    const countdown = setInterval(() => {
+    setInterval(() => {
       const now = new Date().getTime();
       const distance = landingTime - now;
 
@@ -27,24 +27,28 @@ const NewTimer = (props) => {
   return (
     <React.Fragment>
       <Grid container>
-        <Grid item xs={12} md={7}>
-          <Typography variant="h2" gutterBottom>
-            {days} days
+        <Grid item xs={12} md={8}>
+          <Typography variant="h3" align="center" gutterBottom>
+            Only {days} days
           </Typography>
         </Grid>
-        <Grid item xs={6} md={5}>
+        <Grid item xs={6} md={4}>
           <Typography variant="h4">{hours} hours</Typography>
         </Grid>
         <Grid item xs={6} md={4}>
           {' '}
-          <Typography variant="h5">{minutes} minutes</Typography>
-        </Grid>
-        <Grid item xs={5} md={4}>
-          {' '}
-          <Typography variant="h6">{seconds} seconds</Typography>
+          <Typography variant="h5" align="right">
+            {minutes} minutes
+          </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Typography variant="h6" gutterBottom>
+          {' '}
+          <Typography variant="h6" align="center">
+            {seconds} seconds
+          </Typography>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <Typography variant="h6" align="center" gutterBottom>
             {' '}
             until Justi and Kenny meet!
           </Typography>
