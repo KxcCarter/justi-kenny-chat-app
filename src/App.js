@@ -32,6 +32,10 @@ const theme = createMuiTheme({
     h4: { fontFamily: headingFontFamily },
     h5: { fontFamily: headingFontFamily },
     h6: { fontFamily: headingFontFamily },
+    subtitle1: {
+      fontFamily: headingFontFamily,
+      fontSize: '1.2rem',
+    },
   },
   palette: {
     info: {

@@ -86,9 +86,9 @@ export default function MainView() {
       <CssBaseline />
       <Container maxWidth="md">
         <AppBar position="relative" className={classes.header}>
-          <Toolbar>
-            <Typography variant="body1" color="inherit" align="center">
-              Justi and Kenny Meeting Countdown! <span>⏳</span>
+          <Toolbar style={{ margin: 'auto' }}>
+            <Typography variant="subtitle1" color="inherit" align="center">
+              Countdown to when Justi and Kenny meet! <span>⏳</span>
             </Typography>
           </Toolbar>
         </AppBar>
