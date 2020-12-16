@@ -5,7 +5,8 @@ const CustomS3Uploader = (props) => {
   const [image, setImage] = useState(null);
   const [uploadURL, setUploadUrl] = useState(null);
 
-  const MAX_IMAGE_SIZE = 2000000;
+  // 5mb?
+  const MAX_IMAGE_SIZE = 5000000;
 
   const API_ENDPOINT =
     'https://tsjcb7kk2b.execute-api.us-east-1.amazonaws.com/uploads';
@@ -33,19 +34,16 @@ const CustomS3Uploader = (props) => {
   };
 
   const removeImage = (e) => {
-    console.log('Remove clicked');
     setImage('');
   };
 
   const uploadImage = async (e) => {
-    console.log('Upload clicked');
-
     const response = await axios.get(API_ENDPOINT, {
       params: { person: 'Justi' },
     });
 
-    console.log('Response: ', response);
-    console.log('Uploading: ', image);
+    // console.log('Response: ', response);
+    // console.log('Uploading: ', image);
 
     let binary = atob(image.split(',')[1]);
     let array = [];
@@ -63,7 +61,6 @@ const CustomS3Uploader = (props) => {
 
     console.log('Result: ', result);
     // Final URL for the user doesn't need the query string params
-    console.log(response.data.person);
     setUploadUrl(response.data.uploadURL.split('?')[0]);
   };
 

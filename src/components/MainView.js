@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     // padding: theme.spacing(6),
   },
   header: {
-    backgroundColor: theme.palette.info.main,
+    backgroundColor: theme.palette.info.light,
   },
   center: {
     textAlign: 'center',
@@ -87,8 +87,8 @@ export default function MainView() {
       <Container maxWidth="md">
         <AppBar position="relative" className={classes.header}>
           <Toolbar>
-            <Typography variant="h6" color="inherit" noWrap>
-              Justi and Kenny Meeting Countdown!
+            <Typography variant="body1" color="inherit" align="center">
+              Justi and Kenny Meeting Countdown! <span>⏳</span>
             </Typography>
           </Toolbar>
         </AppBar>

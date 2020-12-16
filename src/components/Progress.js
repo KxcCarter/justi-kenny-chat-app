@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
   left: {
     position: 'relative',
-    color: 'red',
+
     maxHeight: `${square}px`,
     maxWidth: `${square}px`,
   },
@@ -55,7 +55,7 @@ const Progress = (props) => {
   return (
     <Box
       className={classes.root}
-      style={{ backgroundColor: totalHours <= 12 ? 'green' : '#D9AE89' }}
+      style={{ backgroundColor: totalHours <= 36 ? 'green' : '#D9AE89' }}
     >
       <Typography variant="body1"></Typography>
       <Grid container>
