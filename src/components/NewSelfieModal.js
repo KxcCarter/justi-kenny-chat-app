@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+//
 import CustomS3Uploader from './CustomS3Uploader';
-
 //
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Button, Modal, Box, Input } from '@material-ui/core';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
+import { Modal } from '@material-ui/core';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 
@@ -24,20 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const dropzoneStyle = {
-  margin: 'auto',
-  width: '150px',
-  height: '150px',
-  border: '2px dashed grey',
-  borderRadius: '3px',
-  backgroundColor: 'lightgray',
-  overflow: 'hidden',
-};
-
 export default function NewSelfieModal(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [uploadFinished, setUploadFinished] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -57,28 +44,6 @@ export default function NewSelfieModal(props) {
     props.getPhotos();
     handleClose();
   };
-
-  const body = (
-    <div className={classes.paper}>
-      <Typography variant="b1" id="transition-modal-title" gutterBottom>
-        Upload a new selfie!
-      </Typography>
-
-      <form>
-        <Input type="file" accept="image/*" />
-      </form>
-
-      <Box p={2}>
-        <ButtonGroup variant="contained">
-          {uploadFinished && <Button>use this photo</Button>}
-          <Button onClick={revertToOriginalImage}>
-            revert to original image
-          </Button>
-          <Button onClick={handleClose}>cancel</Button>
-        </ButtonGroup>
-      </Box>
-    </div>
-  );
 
   return (
     <div>
@@ -101,8 +66,6 @@ export default function NewSelfieModal(props) {
             person={props.person}
             revertToOriginalImage={revertToOriginalImage}
           />
-
-          {/* {body} */}
         </Fade>
       </Modal>
     </div>

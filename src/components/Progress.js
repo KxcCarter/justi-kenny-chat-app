@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     backgroundColor: 'green',
     borderRadius: '3px',
     border: '1px solid darkgrey',
+    overflow: 'hidden',
   },
   left: {
     position: 'relative',
