@@ -29,7 +29,7 @@ const GiphyBox = ({ tag }) => {
     const { data } = await axios.get('https://api.giphy.com/v1/gifs/random', {
       params: {
         api_key: process.env.REACT_APP_giphy,
-        rating: 'g',
+        // rating: 'pg-13',
         tag: tag,
       },
     });

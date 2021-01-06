@@ -80,7 +80,7 @@ export default function MainView() {
         <AppBar position="relative" className={classes.header}>
           <Toolbar style={{ margin: 'auto' }}>
             <Typography variant="subtitle1" color="inherit" align="center">
-              Countdown to when Justi and Kenny meet! <span>⏳</span>
+              New Meeting Date - May 3rd 2021 <span>⏳</span>
             </Typography>
           </Toolbar>
         </AppBar>
@@ -90,9 +90,8 @@ export default function MainView() {
         <div className={classes.heroContent}>
           <Container maxWidth="md">
             <NewTimer />
-            <Typography variant="subtitle2" align="center" gutterBottom>
-              <span>📷</span> Click on one of our photos and see what happens!{' '}
-              <span>📷</span>
+            <Typography variant="body1" align="center">
+              (Assuming I am able to go to the wedding in Elblag in May.)
             </Typography>
             <Progress />
             <Typography
@@ -101,8 +100,12 @@ export default function MainView() {
               color="textSecondary"
               paragraph
             >
-              As time progresses, our photos will get closer and closer until
-              finally you are here!
+              As time progresses, our photos will get closer and closer until we
+              meet face to face!
+            </Typography>
+            <Typography variant="subtitle2" align="center" gutterBottom>
+              <span>📷</span> Click on one of our photos and see what happens!{' '}
+              <span>📷</span>
             </Typography>
             <Box className={classes.center}>
               <GiphyBox tag="cat" />

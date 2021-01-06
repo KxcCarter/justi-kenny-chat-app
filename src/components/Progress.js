@@ -5,7 +5,7 @@ import Axios from 'axios';
 //
 import NewSelfieModal from './NewSelfieModal';
 
-const landingTime = new Date('January 3, 2021 19:45:00').getTime();
+const landingTime = new Date('May 3, 2021 19:45:00').getTime();
 
 const square = 150;
 
@@ -35,22 +35,16 @@ const Progress = (props) => {
   const [kennyPhoto, setKennyPhoto] = useState(null);
   //
   const classes = useStyles();
-  //   const [days, setDays] = useState(0);
-  const [totalHours, setTotalHours] = useState(860);
-  //   const [seconds, setSeconds] = useState(0);
+  const [totalHours, setTotalHours] = useState(117 * 24);
 
-  const units = 200 / 860;
-  //   const units = 200 / 60;
+  const units = 200 / (117 * 24);
 
   useEffect(() => {
     const now = new Date().getTime();
     const distance = landingTime - now;
 
     const distanceMeter = setInterval(() => {
-      //   setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
       setTotalHours(Math.floor(distance / (1000 * 60 * 60)));
-
-      //   setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
     }, 5000);
 
     if (distance < 1000 * 60 * 60) {

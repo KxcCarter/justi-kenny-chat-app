@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
-const landingTime = new Date('January 3, 2021 19:45:00').getTime();
+const landingTime = new Date('May 3, 2021 19:45:00').getTime();
 
 const NewTimer = (props) => {
   const [days, setDays] = useState(0);
@@ -28,9 +28,11 @@ const NewTimer = (props) => {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={8}>
-          <Typography variant="h3" align="center" gutterBottom>
-            Only {days} days
-          </Typography>
+          {days <= 0 ? null : (
+            <Typography variant="h3" align="center" gutterBottom>
+              {days} days
+            </Typography>
+          )}
         </Grid>
         <Grid item xs={6} md={4}>
           <Typography variant="h4">{hours} hours</Typography>
