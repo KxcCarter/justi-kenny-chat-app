@@ -68,9 +68,9 @@ const CustomS3Uploader = (props) => {
     let reader = new FileReader();
     reader.onload = (e) => {
       console.log('length: ', e.target.result.includes('data:image/jpeg'));
-      if (!e.target.result.includes('data:image/jpeg')) {
-        return alert('Wrong file type - JPG only.');
-      }
+      // if (!e.target.result.includes('data:image/jpeg')) {
+      //   return alert('Wrong file type - JPG only.');
+      // }
       // Do I care?
       if (e.target.result.length > MAX_IMAGE_SIZE) {
         return alert('Image is loo large.');

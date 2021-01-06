@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,12 +15,12 @@ import NewTimer from './NewTimer';
 import Progress from './Progress';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
-// import TestChat from './TestChat';
+import EmbededPreview from './EmbededPreview';
 
 function Copyright() {
   return (
     <React.Fragment>
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant="body2" color="primary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://github.com/KxcCarter">
           Kenneth Carter
@@ -33,11 +33,14 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+  body: {
+    backgroundImage: `url('https://www.transparenttextures.com/patterns/gray-floral.png')`,
+    backgroundColor: '#59465920',
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: '#F2E3D525',
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -59,11 +62,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: '#F2E3D5',
+    backgroundColor: theme.palette.secondary.main,
     // padding: theme.spacing(6),
   },
   header: {
-    backgroundColor: theme.palette.info.light,
+    backgroundColor: theme.palette.secondary.main,
   },
   center: {
     textAlign: 'center',
@@ -74,23 +77,23 @@ export default function MainView() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <Container maxWidth="md" className={classes.body}>
       <CssBaseline />
-      <Container maxWidth="md">
-        <AppBar position="relative" className={classes.header}>
-          <Toolbar style={{ margin: 'auto' }}>
-            <Typography variant="subtitle1" color="inherit" align="center">
-              New Meeting Date - May 3rd 2021 <span>⏳</span>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Container>
+
+      <AppBar position="relative" className={classes.header}>
+        <Toolbar style={{ margin: 'auto' }}>
+          <Typography variant="subtitle1" color="primary" align="center">
+            New Meeting Date - May 3rd 2021 <span>⏳</span>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="md">
+        <div>
+          <Container className={classes.heroContent}>
             <NewTimer />
-            <Typography variant="body1" align="center">
+            <Typography variant="body1" align="center" color="textSecondary">
               (Assuming I am able to go to the wedding in Elblag in May.)
             </Typography>
             <Progress />
@@ -109,6 +112,7 @@ export default function MainView() {
             </Typography>
             <Box className={classes.center}>
               <GiphyBox tag="cat" />
+              <EmbededPreview />
             </Box>
           </Container>
         </div>
@@ -124,6 +128,6 @@ export default function MainView() {
         <Copyright />
       </footer>
       {/* End footer */}
-    </React.Fragment>
+    </Container>
   );
 }

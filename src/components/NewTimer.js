@@ -29,28 +29,40 @@ const NewTimer = (props) => {
       <Grid container>
         <Grid item xs={12} md={8}>
           {days <= 0 ? null : (
-            <Typography variant="h3" align="center" gutterBottom>
+            <Typography
+              variant="h3"
+              color="textSecondary"
+              align="center"
+              gutterBottom
+            >
               {days} days
             </Typography>
           )}
         </Grid>
         <Grid item xs={6} md={4}>
-          <Typography variant="h4">{hours} hours</Typography>
+          <Typography variant="h4" color="textSecondary">
+            {hours} hours
+          </Typography>
         </Grid>
         <Grid item xs={6} md={4}>
           {' '}
-          <Typography variant="h5" align="right">
+          <Typography variant="h5" color="textSecondary" align="right">
             {minutes} minutes
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
           {' '}
-          <Typography variant="h6" align="center">
+          <Typography variant="h6" color="textSecondary" align="center">
             {seconds} seconds
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Typography variant="h6" align="center" gutterBottom>
+          <Typography
+            variant="h6"
+            color="textSecondary"
+            align="center"
+            gutterBottom
+          >
             {' '}
             until Justi and Kenny meet!
           </Typography>

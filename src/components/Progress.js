@@ -69,7 +69,7 @@ const Progress = (props) => {
     <Paper elevation={5}>
       <Box
         className={classes.root}
-        style={{ backgroundColor: totalHours <= 36 ? 'green' : '#D9AE89' }}
+        style={{ backgroundColor: totalHours <= 36 ? 'green' : '#E8DBC8' }}
       >
         <Typography variant="body1"></Typography>
         <Grid container>
