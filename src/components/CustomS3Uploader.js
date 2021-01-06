@@ -1,9 +1,51 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Grid,
+  Input,
+  Typography,
+} from '@material-ui/core';
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    backgroundColor: theme.palette.background.main,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    textAlign: 'center',
+    borderRadius: '5px',
+  },
+  imageBox: {
+    margin: 'auto',
+    // width: '350px',
+    // height: '350px',
+    border: '2px dashed grey',
+    borderRadius: '3px',
+    overflow: 'hidden',
+  },
+  image: {
+    maxWidth: '65%',
+    margin: 'auto',
+  },
+  input: {
+    height: 0,
+    padding: 0,
+    opacity: 0,
+  },
+  label: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  icon: { fontSize: '4rem' },
+}));
 
 const CustomS3Uploader = (props) => {
   const [image, setImage] = useState(null);
   const [uploadURL, setUploadUrl] = useState(null);
+  const classes = useStyles();
 
   // 5mb?
   const MAX_IMAGE_SIZE = 5000000;
@@ -39,11 +81,8 @@ const CustomS3Uploader = (props) => {
 
   const uploadImage = async (e) => {
     const response = await axios.get(API_ENDPOINT, {
-      params: { person: 'Justi' },
+      params: { person: props.person },
     });
-
-    // console.log('Response: ', response);
-    // console.log('Uploading: ', image);
 
     let binary = atob(image.split(',')[1]);
     let array = [];
@@ -65,27 +104,68 @@ const CustomS3Uploader = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <h1>Custom S3 Uploader Test</h1>
+    <Box className={classes.paper}>
+      <Box p={1}>
+        <Typography variant="h5" gutterBottom>
+          Upload a new selfie!
+        </Typography>
+        <Typography variant="body2">
+          {!image ? 'For best results use a square image' : 'Looking good!! 😍'}
+        </Typography>
+      </Box>
       {!image ? (
-        <div>
-          <h2>Select an image</h2>
-          <input type="file" onChange={onFileChange} />
-        </div>
+        <Box p={2}>
+          <label htmlFor="file" className={classes.label}>
+            <PhotoCameraIcon className={classes.icon} />
+          </label>
+          <input
+            id="file"
+            type="file"
+            accepts="image/*"
+            onChange={onFileChange}
+            className={classes.input}
+          />
+
+          <Box p={1}>
+            <ButtonGroup color="primary" variant="contained" size="small">
+              <Button onClick={props.handleClose}>Cancel</Button>
+              <Button onClick={props.revertToOriginalImage}>
+                revert to original image
+              </Button>
+            </ButtonGroup>
+          </Box>
+        </Box>
       ) : (
-        <div>
-          <img src={image} alt="this is your new avatar" />
+        <div className={classes.imageBox}>
+          <img
+            src={image}
+            alt="this will be your new avatar"
+            className={classes.imageBox}
+          />
           {!uploadURL && (
-            <div>
-              <button onClick={removeImage}>Remove image</button>
-              <button onClick={uploadImage}>Upload image</button>
-            </div>
+            <Box p={2}>
+              <ButtonGroup variant="contained" color="primary">
+                <Button onClick={removeImage}>Remove image</Button>
+                <Button onClick={uploadImage}>Upload image</Button>
+                <Button onClick={props.handleClose}>cancel</Button>
+              </ButtonGroup>
+            </Box>
           )}
         </div>
       )}
 
-      {uploadURL && <h2>Success! Image uploaded to bucket.</h2>}
-    </React.Fragment>
+      {uploadURL && (
+        <Box p={2}>
+          <Typography variant="h5">Success! Image uploaded!</Typography>
+          <ButtonGroup variant="contained" color="primary">
+            <Button onClick={props.handleClose}>close</Button>
+            <Button onClick={props.revertToOriginalImage}>
+              Nevermind! I want the old image!
+            </Button>
+          </ButtonGroup>
+        </Box>
+      )}
+    </Box>
   );
 };
 
