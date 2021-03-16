@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
-const landingTime = new Date('May 3, 2021 19:45:00').getTime();
+const landingTime = new Date('April 7, 2021 19:45:00').getTime();
 
 const NewTimer = (props) => {
   const [days, setDays] = useState(0);

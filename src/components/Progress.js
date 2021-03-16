@@ -5,7 +5,7 @@ import Axios from 'axios';
 //
 import NewSelfieModal from './NewSelfieModal';
 
-const landingTime = new Date('May 3, 2021 19:45:00').getTime();
+const landingTime = new Date('April 7, 2021 19:45:00').getTime();
 
 const square = 150;
 
@@ -35,9 +35,11 @@ const Progress = (props) => {
   const [kennyPhoto, setKennyPhoto] = useState(null);
   //
   const classes = useStyles();
-  const [totalHours, setTotalHours] = useState(117 * 24);
+  const [totalHours, setTotalHours] = useState(31 * 24);
+  // set default starting position:         days x hours
 
-  const units = 200 / (117 * 24);
+  const units = 200 / 744;
+  // 200 divided by total hours remaning
 
   useEffect(() => {
     const now = new Date().getTime();

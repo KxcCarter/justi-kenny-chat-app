@@ -15,7 +15,7 @@ import NewTimer from './NewTimer';
 import Progress from './Progress';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
-import EmbededPreview from './EmbededPreview';
+// import EmbededPreview from './EmbededPreview';
 
 function Copyright() {
   return (
@@ -83,7 +83,7 @@ export default function MainView() {
       <AppBar position="relative" className={classes.header}>
         <Toolbar style={{ margin: 'auto' }}>
           <Typography variant="subtitle1" color="primary" align="center">
-            New Meeting Date - May 3rd 2021 <span>⏳</span>
+            New Meeting Date - April 7th(?) 2021!!! <span>⏳</span>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -94,9 +94,16 @@ export default function MainView() {
           <Container className={classes.heroContent}>
             <NewTimer />
             <Typography variant="body1" align="center" color="textSecondary">
-              (Assuming I am able to go to the wedding in Elblag in May.)
+              Soon the wait will finally be over!!
             </Typography>
+
             <Progress />
+
+            <Typography variant="subtitle2" align="center">
+              I had to remake the progress bar for the new date, so it looks
+              like we are farther away, this this time the progress will move
+              faster 😉
+            </Typography>
             <Typography
               variant="body2"
               align="center"
@@ -112,7 +119,7 @@ export default function MainView() {
             </Typography>
             <Box className={classes.center}>
               <GiphyBox tag="cat" />
-              <EmbededPreview />
+              {/* <EmbededPreview /> */}
             </Box>
           </Container>
         </div>
