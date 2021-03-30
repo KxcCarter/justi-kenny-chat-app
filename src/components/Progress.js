@@ -5,7 +5,7 @@ import Axios from 'axios';
 //
 import NewSelfieModal from './NewSelfieModal';
 
-const landingTime = new Date('April 7, 2021 19:45:00').getTime();
+const landingTime = new Date('April 7, 2021 13:45:00').getTime();
 
 const square = 150;
 
