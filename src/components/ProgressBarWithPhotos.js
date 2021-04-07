@@ -5,7 +5,7 @@ import Axios from 'axios';
 //
 import NewSelfieModal from './NewSelfieModal';
 
-const landingTime = new Date('April 7, 2021 13:45:00').getTime();
+const landingTime = new Date('April 6, 2021 16:35:00').getTime();
 
 const square = 150;
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Progress = (props) => {
+const ProgressBarWithPhotos = (props) => {
   const [justiPhoto, setJustiPhoto] = useState(null);
   const [kennyPhoto, setKennyPhoto] = useState(null);
   //
@@ -109,4 +109,4 @@ const Progress = (props) => {
   );
 };
 
-export default Progress;
+export default ProgressBarWithPhotos;

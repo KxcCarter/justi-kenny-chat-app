@@ -11,8 +11,8 @@ import { Box } from '@material-ui/core';
 
 //
 
-import NewTimer from './NewTimer';
-import Progress from './Progress';
+import TextCountdownComponent from './TextCountdownComponent';
+import ProgressBarWithPhotos from './ProgressBarWithPhotos';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
 // import EmbededPreview from './EmbededPreview';
@@ -83,7 +83,7 @@ export default function MainView() {
       <AppBar position="relative" className={classes.header}>
         <Toolbar style={{ margin: 'auto' }}>
           <Typography variant="subtitle1" color="primary" align="center">
-            Meeting Date - April 7th 2021!!! <span>⏳</span>
+            <span>🤷🏼‍♀️⏳🤷‍♂️</span>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -92,18 +92,18 @@ export default function MainView() {
         {/* Hero unit */}
         <div>
           <Container className={classes.heroContent}>
-            <NewTimer />
-            <Typography variant="body1" align="center" color="textSecondary">
+            {/* <TextCountdownComponent /> */}
+            {/* <Typography variant="body1" align="center" color="textSecondary">
               I hope you're ready to make pierogi with me <span> 😉 👩‍❤️‍💋‍👨</span>
-            </Typography>
+            </Typography> */}
 
-            <Progress />
+            {/* <ProgressBarWithPhotos /> */}
 
             {/* <Typography variant="subtitle2" align="center">
               I had to remake the progress bar for the new date, so it looks
               like we are farther away, this this time the progress will move
               faster 😉
-            </Typography> */}
+            </Typography>
             <Typography
               variant="body2"
               align="center"
@@ -116,7 +116,7 @@ export default function MainView() {
             <Typography variant="subtitle2" align="center" gutterBottom>
               <span>📷</span> Click on one of our photos and see what happens!{' '}
               <span>📷</span>
-            </Typography>
+            </Typography> */}
             <Box className={classes.center}>
               <GiphyBox tag="cat" />
               {/* <EmbededPreview /> */}

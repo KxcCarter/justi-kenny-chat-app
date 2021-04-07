@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
-const landingTime = new Date('April 7, 2021 13:45:00').getTime();
+const landingTime = new Date('April 6, 2021 16:35:00').getTime();
 
-const NewTimer = (props) => {
+const TextCountdownComponent = (props) => {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -72,4 +72,4 @@ const NewTimer = (props) => {
   );
 };
 
-export default NewTimer;
+export default TextCountdownComponent;
