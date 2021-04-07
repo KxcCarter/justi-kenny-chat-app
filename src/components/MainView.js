@@ -6,7 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import { Box } from '@material-ui/core';
 
 //
@@ -15,22 +14,9 @@ import TextCountdownComponent from './TextCountdownComponent';
 import ProgressBarWithPhotos from './ProgressBarWithPhotos';
 import GiphyBox from './GiphyBox';
 import ChatBox from './ChatBox';
-// import EmbededPreview from './EmbededPreview';
+import Copyright from './Copyright';
 
-function Copyright() {
-  return (
-    <React.Fragment>
-      <Typography variant="body2" color="primary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://github.com/KxcCarter">
-          Kenneth Carter
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    </React.Fragment>
-  );
-}
+// import EmbededPreview from './EmbededPreview';
 
 const useStyles = makeStyles((theme) => ({
   body: {
