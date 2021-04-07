@@ -13,7 +13,7 @@ import { Box } from '@material-ui/core';
 import TextCountdownComponent from './TextCountdownComponent';
 import ProgressBarWithPhotos from './ProgressBarWithPhotos';
 import GiphyBox from './GiphyBox';
-import ChatBox from './ChatBox';
+import ChatBox from '../ChatRoom/ChatBox';
 import Copyright from './Copyright';
 
 // import EmbededPreview from './EmbededPreview';
