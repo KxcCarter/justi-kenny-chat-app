@@ -35,7 +35,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   body: {
     backgroundImage: `url('https://www.transparenttextures.com/patterns/gray-floral.png')`,
-    backgroundColor: '#59465920',
+    backgroundColor: '#59465910',
   },
   icon: {
     marginRight: theme.spacing(2),

@@ -5,5 +5,7 @@ img {
 }
 
 body {
-  /* background-image: url('https://www.transparenttextures.com/patterns/gray-floral.png'); */
+  background-image: url('https://operisstorage.s3.us-east-2.amazonaws.com/Justi+Background+zdje%CC%A8cie-29.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
 }
