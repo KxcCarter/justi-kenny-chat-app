@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,38 +6,27 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import { Box } from '@material-ui/core';
 
 //
 
-import NewTimer from './NewTimer';
-import Progress from './Progress';
+import TextCountdownComponent from './TextCountdownComponent';
+import ProgressBarWithPhotos from './ProgressBarWithPhotos';
 import GiphyBox from './GiphyBox';
-import ChatBox from './ChatBox';
-// import TestChat from './TestChat';
+import ChatBox from '../ChatRoom/ChatBox';
+import Copyright from './Copyright';
 
-function Copyright() {
-  return (
-    <React.Fragment>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://github.com/KxcCarter">
-          Kenneth Carter
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    </React.Fragment>
-  );
-}
+// import EmbededPreview from './EmbededPreview';
 
 const useStyles = makeStyles((theme) => ({
+  body: {
+    backgroundImage: `url('https://www.transparenttextures.com/patterns/gray-floral.png')`,
+    backgroundColor: '#59465910',
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: '#F2E3D525',
     padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
@@ -59,11 +48,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: '#F2E3D5',
+    backgroundColor: theme.palette.secondary.main,
     // padding: theme.spacing(6),
   },
   header: {
-    backgroundColor: theme.palette.info.light,
+    backgroundColor: theme.palette.secondary.main,
   },
   center: {
     textAlign: 'center',
@@ -74,38 +63,49 @@ export default function MainView() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <Container maxWidth="md" className={classes.body}>
       <CssBaseline />
-      <Container maxWidth="md">
-        <AppBar position="relative" className={classes.header}>
-          <Toolbar style={{ margin: 'auto' }}>
-            <Typography variant="subtitle1" color="inherit" align="center">
-              Countdown to when Justi and Kenny meet! <span>⏳</span>
-            </Typography>
-          </Toolbar>
-        </AppBar>
-      </Container>
+
+      <AppBar position="relative" className={classes.header}>
+        <Toolbar style={{ margin: 'auto' }}>
+          <Typography variant="subtitle1" color="primary" align="center">
+            <span>🤷🏼‍♀️⏳🤷‍♂️</span>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="md">
-            <NewTimer />
-            <Typography variant="subtitle2" align="center" gutterBottom>
-              <span>📷</span> Click on one of our photos and see what happens!{' '}
-              <span>📷</span>
+        <div>
+          <Container className={classes.heroContent}>
+            {/* <TextCountdownComponent /> */}
+            {/* <Typography variant="body1" align="center" color="textSecondary">
+              I hope you're ready to make pierogi with me <span> 😉 👩‍❤️‍💋‍👨</span>
+            </Typography> */}
+
+            {/* <ProgressBarWithPhotos /> */}
+
+            {/* <Typography variant="subtitle2" align="center">
+              I had to remake the progress bar for the new date, so it looks
+              like we are farther away, this this time the progress will move
+              faster 😉
             </Typography>
-            <Progress />
             <Typography
               variant="body2"
               align="center"
               color="textSecondary"
               paragraph
             >
-              As time progresses, our photos will get closer and closer until
-              finally you are here!
+              As time progresses, our photos will get closer and closer until we
+              meet face to face!
             </Typography>
+            <Typography variant="subtitle2" align="center" gutterBottom>
+              <span>📷</span> Click on one of our photos and see what happens!{' '}
+              <span>📷</span>
+            </Typography> */}
             <Box className={classes.center}>
               <GiphyBox tag="cat" />
+              {/* <EmbededPreview /> */}
             </Box>
           </Container>
         </div>
@@ -121,6 +121,6 @@ export default function MainView() {
         <Copyright />
       </footer>
       {/* End footer */}
-    </React.Fragment>
+    </Container>
   );
 }

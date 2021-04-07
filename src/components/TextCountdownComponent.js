@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
-const landingTime = new Date('January 3, 2021 19:45:00').getTime();
+const landingTime = new Date('April 6, 2021 16:35:00').getTime();
 
-const NewTimer = (props) => {
+const TextCountdownComponent = (props) => {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -28,29 +28,43 @@ const NewTimer = (props) => {
     <React.Fragment>
       <Grid container>
         <Grid item xs={12} md={8}>
-          <Typography variant="h3" align="center" gutterBottom>
-            Only {days} days
+          {days <= 0 ? null : (
+            <Typography
+              variant="h3"
+              color="textSecondary"
+              align="center"
+              gutterBottom
+            >
+              {days} days
+            </Typography>
+          )}
+        </Grid>
+        <Grid item xs={6} md={4}>
+          <Typography variant="h4" color="textSecondary">
+            {hours} hours
           </Typography>
         </Grid>
         <Grid item xs={6} md={4}>
-          <Typography variant="h4">{hours} hours</Typography>
-        </Grid>
-        <Grid item xs={6} md={4}>
           {' '}
-          <Typography variant="h5" align="right">
+          <Typography variant="h5" color="textSecondary" align="right">
             {minutes} minutes
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
           {' '}
-          <Typography variant="h6" align="center">
+          <Typography variant="h6" color="textSecondary" align="center">
             {seconds} seconds
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Typography variant="h6" align="center" gutterBottom>
+          <Typography
+            variant="h6"
+            color="textSecondary"
+            align="center"
+            gutterBottom
+          >
             {' '}
-            until Justi and Kenny meet!
+            until Justi and Kenny meet! <span> 👩‍❤️‍👨 </span>
           </Typography>
         </Grid>
       </Grid>
@@ -58,4 +72,4 @@ const NewTimer = (props) => {
   );
 };
 
-export default NewTimer;
+export default TextCountdownComponent;

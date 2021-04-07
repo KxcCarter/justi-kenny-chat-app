@@ -5,8 +5,7 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Grid,
-  Input,
+  CircularProgress,
   Typography,
 } from '@material-ui/core';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
@@ -40,11 +39,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   icon: { fontSize: '4rem' },
+  loading: {
+    display: 'flex',
+
+    marginLeft: theme.spacing(2),
+  },
 }));
 
 const CustomS3Uploader = (props) => {
   const [image, setImage] = useState(null);
   const [uploadURL, setUploadUrl] = useState(null);
+  const [loading, setLoading] = useState(false);
   const classes = useStyles();
 
   // 5mb?
@@ -63,9 +68,9 @@ const CustomS3Uploader = (props) => {
     let reader = new FileReader();
     reader.onload = (e) => {
       console.log('length: ', e.target.result.includes('data:image/jpeg'));
-      if (!e.target.result.includes('data:image/jpeg')) {
-        return alert('Wrong file type - JPG only.');
-      }
+      // if (!e.target.result.includes('data:image/jpeg')) {
+      //   return alert('Wrong file type - JPG only.');
+      // }
       // Do I care?
       if (e.target.result.length > MAX_IMAGE_SIZE) {
         return alert('Image is loo large.');
@@ -77,9 +82,11 @@ const CustomS3Uploader = (props) => {
 
   const removeImage = (e) => {
     setImage('');
+    setLoading(false);
   };
 
   const uploadImage = async (e) => {
+    setLoading(true);
     const response = await axios.get(API_ENDPOINT, {
       params: { person: props.person },
     });
@@ -100,6 +107,7 @@ const CustomS3Uploader = (props) => {
 
     console.log('Result: ', result);
     // Final URL for the user doesn't need the query string params
+
     setUploadUrl(response.data.uploadURL.split('?')[0]);
   };
 
@@ -112,6 +120,7 @@ const CustomS3Uploader = (props) => {
         <Typography variant="body2">
           {!image ? 'For best results use a square image' : 'Looking good!! 😍'}
         </Typography>
+        {loading ? <CircularProgress className={classes.loading} /> : null}
       </Box>
       {!image ? (
         <Box p={2}>

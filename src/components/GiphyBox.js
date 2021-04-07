@@ -14,7 +14,6 @@ const GiphyBox = ({ tag }) => {
   }, [tag]);
 
   const handleDblClick = () => {
-    console.log('you rang?');
     setSecretSearch(!secretSearch);
   };
 
@@ -29,7 +28,7 @@ const GiphyBox = ({ tag }) => {
     const { data } = await axios.get('https://api.giphy.com/v1/gifs/random', {
       params: {
         api_key: process.env.REACT_APP_giphy,
-        rating: 'g',
+        // rating: 'pg-13',
         tag: tag,
       },
     });
@@ -43,8 +42,7 @@ const GiphyBox = ({ tag }) => {
           {secretSearch && (
             <form onSubmit={handleSubmit}>
               <label htmlFor="secretSearch">
-                You found a secret! <span>🤫</span> Search for other gifs!{' '}
-                <span>🔍</span>
+                <span>🔍</span> Search for other gifs! Even in Polish!
               </label>
               <TextField
                 variant="outlined"
@@ -64,8 +62,7 @@ const GiphyBox = ({ tag }) => {
             src={gif.images.downsized_medium.url}
             alt={gif.caption}
             onTouchStart={handleDblClick}
-
-            // onDoubleClick={handleDblClick}
+            onDoubleClick={handleDblClick}
           />
         </div>
       )}

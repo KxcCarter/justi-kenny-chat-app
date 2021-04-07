@@ -48,20 +48,25 @@ const theme = createMuiTheme({
       main: '#BF895A',
       light: '#D9AE89',
     },
+    secondary: {
+      main: '#261A23',
+      contrastText: '#D9C7B8',
+    },
     background: {
-      main: '#F2E3D5',
+      main: '#594659',
       secondary: '#D9C5AD',
+    },
+    text: {
+      secondary: '#8C634A',
     },
   },
 });
 
-const App = (props) => {
+const App = () => {
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        <MainView />
-      </ThemeProvider>
-    </React.Fragment>
+    <ThemeProvider theme={theme}>
+      <MainView />
+    </ThemeProvider>
   );
 };
 

@@ -5,7 +5,7 @@ import Axios from 'axios';
 //
 import NewSelfieModal from './NewSelfieModal';
 
-const landingTime = new Date('January 3, 2021 19:45:00').getTime();
+const landingTime = new Date('April 6, 2021 16:35:00').getTime();
 
 const square = 150;
 
@@ -30,27 +30,23 @@ const useStyles = makeStyles({
   },
 });
 
-const Progress = (props) => {
+const ProgressBarWithPhotos = (props) => {
   const [justiPhoto, setJustiPhoto] = useState(null);
   const [kennyPhoto, setKennyPhoto] = useState(null);
   //
   const classes = useStyles();
-  //   const [days, setDays] = useState(0);
-  const [totalHours, setTotalHours] = useState(860);
-  //   const [seconds, setSeconds] = useState(0);
+  const [totalHours, setTotalHours] = useState(31 * 24);
+  // set default starting position:         days x hours
 
-  const units = 200 / 860;
-  //   const units = 200 / 60;
+  const units = 200 / 744;
+  // 200 divided by total hours remaning
 
   useEffect(() => {
     const now = new Date().getTime();
     const distance = landingTime - now;
 
     const distanceMeter = setInterval(() => {
-      //   setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
       setTotalHours(Math.floor(distance / (1000 * 60 * 60)));
-
-      //   setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
     }, 5000);
 
     if (distance < 1000 * 60 * 60) {
@@ -75,7 +71,7 @@ const Progress = (props) => {
     <Paper elevation={5}>
       <Box
         className={classes.root}
-        style={{ backgroundColor: totalHours <= 36 ? 'green' : '#D9AE89' }}
+        style={{ backgroundColor: totalHours <= 36 ? 'green' : '#E8DBC8' }}
       >
         <Typography variant="body1"></Typography>
         <Grid container>
@@ -113,4 +109,4 @@ const Progress = (props) => {
   );
 };
 
-export default Progress;
+export default ProgressBarWithPhotos;
