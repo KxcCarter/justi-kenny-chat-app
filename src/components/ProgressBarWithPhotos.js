@@ -7,7 +7,8 @@ import NewSelfieModal from './NewSelfieModal';
 
 const landingTime = new Date('April 6, 2021 16:35:00').getTime();
 
-const square = 150;
+// Determines image size.
+const squareSize = 150;
 
 const useStyles = makeStyles({
   root: {
@@ -19,22 +20,21 @@ const useStyles = makeStyles({
   },
   left: {
     position: 'relative',
-
-    maxHeight: `${square}px`,
-    maxWidth: `${square}px`,
+    maxHeight: `${squareSize}px`,
+    maxWidth: `${squareSize}px`,
   },
   right: {
     position: 'relative',
-    maxHeight: `${square}px`,
-    maxWidth: `${square}px`,
+    maxHeight: `${squareSize}px`,
+    maxWidth: `${squareSize}px`,
   },
 });
 
 const ProgressBarWithPhotos = (props) => {
+  const classes = useStyles();
   const [justiPhoto, setJustiPhoto] = useState(null);
   const [kennyPhoto, setKennyPhoto] = useState(null);
   //
-  const classes = useStyles();
   const [totalHours, setTotalHours] = useState(31 * 24);
   // set default starting position:         days x hours
 
@@ -43,13 +43,13 @@ const ProgressBarWithPhotos = (props) => {
 
   useEffect(() => {
     const now = new Date().getTime();
-    const distance = landingTime - now;
+    const timeRemaining = landingTime - now;
 
     const distanceMeter = setInterval(() => {
-      setTotalHours(Math.floor(distance / (1000 * 60 * 60)));
+      setTotalHours(Math.floor(timeRemaining / (1000 * 60 * 60)));
     }, 5000);
 
-    if (distance < 1000 * 60 * 60) {
+    if (timeRemaining < 1000 * 60 * 60) {
       return clearInterval(distanceMeter);
     }
   }, [totalHours]);
@@ -62,7 +62,8 @@ const ProgressBarWithPhotos = (props) => {
     const { data } = await Axios.get(
       'https://tsjcb7kk2b.execute-api.us-east-1.amazonaws.com/photos'
     );
-
+    // This might not be the best way to do this,
+    // but I'm only ever going to need these 2 photos
     setJustiPhoto(data.Items[0].url);
     setKennyPhoto(data.Items[1].url);
   };
