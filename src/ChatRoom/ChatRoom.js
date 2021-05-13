@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ChatRoom = () => {
   const classes = useStyles();
-  const target = useRef();
+  const targetRef = useRef();
 
   // const messagesRef = firestore.collection('messages');
   // original with limit on messages
@@ -32,6 +32,10 @@ const ChatRoom = () => {
 
   const [messages] = useCollectionData(query, { idField: 'id' });
   const [formValue, setFormValue] = useState('');
+
+  useEffect(() => {
+    targetRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -47,12 +51,8 @@ const ChatRoom = () => {
 
     setFormValue('');
 
-    target.current.scrollIntoView({ behavior: 'smooth' });
+    targetRef.current.scrollIntoView({ behavior: 'smooth' });
   };
-
-  useEffect(() => {
-    target.current.scrollIntoView({ behavior: 'smooth' });
-  }, []);
 
   const renderedMessages = messages?.map((msg) => (
     <ChatMessage key={msg.id} message={msg} />
@@ -65,7 +65,7 @@ const ChatRoom = () => {
           messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)} */}
 
         {renderedMessages}
-        <div ref={target}></div>
+        <div ref={targetRef}></div>
       </div>
       <Divider variant="fullWidth" />
       <Box pt={2}>
