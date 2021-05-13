@@ -65,11 +65,11 @@ function ChatMessage(props) {
   };
 
   return (
-    <div onClick={handleClick} className={classes.outerDiv}>
+    <div onDoubleClick={handleClick} className={classes.outerDiv}>
       {uid === auth.currentUser.uid && editMode && (
         <div
           className={classes.deleteBtn}
-          onDoubleClick={() => props.deleteMessage(id)}
+          onClick={() => props.deleteMessage(id)}
         >
           <DeleteIcon color="error" />
         </div>
