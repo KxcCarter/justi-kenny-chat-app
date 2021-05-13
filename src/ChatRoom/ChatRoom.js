@@ -16,6 +16,13 @@ const useStyles = makeStyles((theme) => ({
   input: {
     padding: '3px',
   },
+  composeBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
 }));
 
 // ***
@@ -70,17 +77,21 @@ const ChatRoom = () => {
       <Divider variant="fullWidth" />
       <Box pt={2}>
         <form onSubmit={sendMessage}>
-          <TextField
-            className={classes.input}
-            size="small"
-            variant="outlined"
-            placeholder="Say hello!"
-            value={formValue}
-            onChange={(e) => setFormValue(e.target.value)}
-          />
-          <Fab size="small" type="submit" className={classes.button}>
-            <SendIcon />
-          </Fab>
+          <div className={classes.composeBox}>
+            <TextField
+              className={classes.input}
+              size="small"
+              fullWidth
+              multiline
+              variant="outlined"
+              placeholder="Say hello!"
+              value={formValue}
+              onChange={(e) => setFormValue(e.target.value)}
+            />
+            <Fab size="small" type="submit" className={classes.button}>
+              <SendIcon />
+            </Fab>
+          </div>
         </form>
       </Box>
       <SignOut />
