@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 
 import { auth, firestore, createTimestamp } from '../firebase';
 
-// import firebase from 'firebase/app';
-// import 'firebase/firestore';
-// import 'firebase/auth';
-
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, TextField, Fab, Divider } from '@material-ui/core';
@@ -14,20 +10,6 @@ import SendIcon from '@material-ui/icons/Send';
 //
 import ChatMessage from './ChatMessage';
 import SignOut from './SignOut';
-
-// ***
-// firebase.initializeApp({
-//   apiKey: process.env.REACT_APP_firebase,
-//   authDomain: 'justikennycountdown.firebaseapp.com',
-//   databaseURL: 'https://justikennycountdown.firebaseio.com',
-//   projectId: 'justikennycountdown',
-//   storageBucket: 'justikennycountdown.appspot.com',
-//   messagingSenderId: '376729469916',
-//   appId: '1:376729469916:web:7e4360d7b9536be486c519',
-//   measurementId: 'G-K0Z8MRDKFQ',
-// });
-
-//
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -40,10 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
 // ***
 
-const ChatRoom = (props) => {
+const ChatRoom = () => {
   const classes = useStyles();
-  // const auth = firebase.auth();
-  // const firestore = firebase.firestore();
 
   const messagesRef = firestore.collection('messages');
   // original with limit on messages
@@ -61,7 +41,6 @@ const ChatRoom = (props) => {
 
     await messagesRef.add({
       text: formValue,
-      // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       createdAt: createTimestamp.serverTimestamp(),
       uid,
       photoURL,
