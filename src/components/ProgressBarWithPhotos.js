@@ -74,6 +74,7 @@ const ProgressBarWithPhotos = (props) => {
         className={classes.root}
         style={{ backgroundColor: totalHours <= 36 ? 'green' : '#E8DBC8' }}
       >
+        {/* Why is this here? \/ */}
         <Typography variant="body1"></Typography>
         <Grid container>
           <Grid item xs={2}>
