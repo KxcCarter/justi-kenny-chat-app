@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { auth, messagesRef, createTimestamp } from '../firebase';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 //
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ChatRoom = () => {
   const classes = useStyles();
+  const target = useRef();
 
   // const messagesRef = firestore.collection('messages');
   // original with limit on messages
@@ -45,13 +46,26 @@ const ChatRoom = () => {
     });
 
     setFormValue('');
+
+    target.current.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    target.current.scrollIntoView({ behavior: 'smooth' });
+  }, []);
+
+  const renderedMessages = messages?.map((msg) => (
+    <ChatMessage key={msg.id} message={msg} />
+  ));
 
   return (
     <React.Fragment>
       <div style={{ maxHeight: '500px', overflow: 'scroll' }}>
-        {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+        {/* {messages &&
+          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)} */}
+
+        {renderedMessages}
+        <div ref={target}></div>
       </div>
       <Divider variant="fullWidth" />
       <Box pt={2}>
