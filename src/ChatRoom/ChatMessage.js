@@ -1,11 +1,8 @@
 import React from 'react';
+import { auth } from '../firebase';
 //
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Avatar } from '@material-ui/core';
-//
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
 //
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 
 function ChatMessage(props) {
   const classes = useStyles();
-  const auth = firebase.auth();
   const { text, uid, photoURL } = props.message;
   const messageClass =
     uid === auth.currentUser.uid ? classes.sent : classes.received;
