@@ -1,4 +1,6 @@
 import React from 'react';
+import { auth } from '../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 //
 import ChatRoom from './ChatRoom';
 import SignInWithGoogle from './SignInWithGoogle';
@@ -6,12 +8,6 @@ import SignInWithGoogle from './SignInWithGoogle';
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 //
-import firebase from 'firebase/app';
-
-import 'firebase/firestore';
-import 'firebase/auth';
-
-import { useAuthState } from 'react-firebase-hooks/auth';
 
 const useStyles = makeStyles({
   root: {
@@ -24,10 +20,8 @@ const useStyles = makeStyles({
   },
 });
 
-const ChatBox = (props) => {
+const ChatBox = () => {
   const classes = useStyles();
-  const auth = firebase.auth();
-
   const [user] = useAuthState(auth);
 
   return (
