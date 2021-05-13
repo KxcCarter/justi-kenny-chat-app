@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-
-import { auth, firestore, createTimestamp } from '../firebase';
-
+import { auth, messagesRef, createTimestamp } from '../firebase';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+//
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, TextField, Fab, Divider } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
-
 //
 import ChatMessage from './ChatMessage';
 import SignOut from './SignOut';
@@ -25,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const ChatRoom = () => {
   const classes = useStyles();
 
-  const messagesRef = firestore.collection('messages');
+  // const messagesRef = firestore.collection('messages');
   // original with limit on messages
   //   const query = messagesRef.orderBy('createdAt').limit(50);
   // no limit on messages
