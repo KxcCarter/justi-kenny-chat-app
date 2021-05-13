@@ -1,17 +1,21 @@
 import React from 'react';
 
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import app, { auth, firestore, provider } from '../firebase';
+
+// import firebase from 'firebase/app';
+// import 'firebase/firestore';
+// import 'firebase/auth';
 
 // MUI
 import { Button } from '@material-ui/core';
 
-const SignInWithGoogle = (props) => {
-  const auth = firebase.auth();
+const SignInWithGoogle = () => {
+  // const auth = firebase.auth();
 
   const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    // const provider = new firebase.auth.GoogleAuthProvider();
+    // auth.signInWithPopup(provider);
+    // const prov = new app.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   };
 
