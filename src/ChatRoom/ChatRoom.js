@@ -46,9 +46,7 @@ const ChatRoom = () => {
 
   const sendMessage = async (event) => {
     event.preventDefault();
-
     const { uid, photoURL } = auth.currentUser;
-
     await messagesRef.add({
       text: formValue,
       createdAt: createTimestamp.serverTimestamp(),
@@ -57,12 +55,19 @@ const ChatRoom = () => {
     });
 
     setFormValue('');
-
     targetRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const deleteMessage = async (id) => {
+    try {
+      await messagesRef.doc(id).delete();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const renderedMessages = messages?.map((msg) => (
-    <ChatMessage key={msg.id} message={msg} />
+    <ChatMessage key={msg.id} message={msg} deleteMessage={deleteMessage} />
   ));
 
   return (
