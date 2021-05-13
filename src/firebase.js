@@ -15,8 +15,9 @@ const app = firebase.initializeApp({
 
 export const auth = app.auth();
 
-// This is just a guess for now
 export const firestore = app.firestore();
+
+export const messagesRef = firestore.collection('messages');
 
 export const provider = new firebase.auth.GoogleAuthProvider();
 
