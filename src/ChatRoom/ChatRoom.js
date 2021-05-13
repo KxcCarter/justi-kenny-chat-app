@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { auth, firestore } from '../firebase';
+import { auth, firestore, createTimestamp } from '../firebase';
 
 // import firebase from 'firebase/app';
 // import 'firebase/firestore';
@@ -62,7 +62,7 @@ const ChatRoom = (props) => {
     await messagesRef.add({
       text: formValue,
       // createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      createdAt: firestore.FieldValue.serverTimestamp(),
+      createdAt: createTimestamp.serverTimestamp(),
       uid,
       photoURL,
     });
