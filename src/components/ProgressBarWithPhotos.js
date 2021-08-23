@@ -4,8 +4,7 @@ import { Box, Paper, Grid, Typography } from '@material-ui/core';
 import Axios from 'axios';
 //
 import NewSelfieModal from './NewSelfieModal';
-
-const landingTime = new Date('April 6, 2021 16:35:00').getTime();
+import { meetingDate } from '../CONSTANTS';
 
 // Determines image size.
 const squareSize = 150;
@@ -30,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ProgressBarWithPhotos = (props) => {
+const ProgressBarWithPhotos = () => {
   const classes = useStyles();
   const [justiPhoto, setJustiPhoto] = useState(null);
   const [kennyPhoto, setKennyPhoto] = useState(null);
@@ -38,12 +37,12 @@ const ProgressBarWithPhotos = (props) => {
   const [totalHours, setTotalHours] = useState(31 * 24);
   // set default starting position:         days x hours
 
-  const units = 200 / 744;
+  const units = 200 / totalHours;
   // 200 divided by total hours remaning
 
   useEffect(() => {
     const now = new Date().getTime();
-    const timeRemaining = landingTime - now;
+    const timeRemaining = meetingDate - now;
 
     const distanceMeter = setInterval(() => {
       setTotalHours(Math.floor(timeRemaining / (1000 * 60 * 60)));

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
-
-const landingTime = new Date('April 6, 2021 16:35:00').getTime();
+import { meetingDate } from '../CONSTANTS';
 
 const TextCountdownComponent = (props) => {
   const [days, setDays] = useState(0);
@@ -13,7 +12,7 @@ const TextCountdownComponent = (props) => {
   useEffect(() => {
     setInterval(() => {
       const now = new Date().getTime();
-      const distance = landingTime - now;
+      const distance = meetingDate - now;
 
       setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
       setHours(
@@ -31,7 +30,7 @@ const TextCountdownComponent = (props) => {
           {days <= 0 ? null : (
             <Typography
               variant="h3"
-              color="textSecondary"
+              color="primary"
               align="center"
               gutterBottom
             >
@@ -40,31 +39,26 @@ const TextCountdownComponent = (props) => {
           )}
         </Grid>
         <Grid item xs={6} md={4}>
-          <Typography variant="h4" color="textSecondary">
+          <Typography variant="h4" color="primary">
             {hours} hours
           </Typography>
         </Grid>
         <Grid item xs={6} md={4}>
           {' '}
-          <Typography variant="h5" color="textSecondary" align="right">
+          <Typography variant="h5" color="primary" align="right">
             {minutes} minutes
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
           {' '}
-          <Typography variant="h6" color="textSecondary" align="center">
+          <Typography variant="h6" color="primary" align="center">
             {seconds} seconds
           </Typography>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Typography
-            variant="h6"
-            color="textSecondary"
-            align="center"
-            gutterBottom
-          >
+          <Typography variant="h6" color="primary" align="center" gutterBottom>
             {' '}
-            until Justi and Kenny meet! <span> 👩‍❤️‍👨 </span>
+            until Justi and Kenny are together again!! <span> 👩‍❤️‍👨 </span>
           </Typography>
         </Grid>
       </Grid>

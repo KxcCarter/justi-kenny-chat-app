@@ -16,8 +16,6 @@ import GiphyBox from './GiphyBox';
 import ChatBox from '../ChatRoom/ChatBox';
 import Copyright from './Copyright';
 
-// import EmbededPreview from './EmbededPreview';
-
 const useStyles = makeStyles((theme) => ({
   body: {
     backgroundImage: `url('https://www.transparenttextures.com/patterns/gray-floral.png')`,
@@ -69,7 +67,7 @@ export default function MainView() {
       <AppBar position="relative" className={classes.header}>
         <Toolbar style={{ margin: 'auto' }}>
           <Typography variant="subtitle1" color="primary" align="center">
-            <span>🤷🏼‍♀️⏳🤷‍♂️</span>
+            <span>Kenny and Justi will finally be together forever!</span>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -78,17 +76,16 @@ export default function MainView() {
         {/* Hero unit */}
         <div>
           <Container className={classes.heroContent}>
-            {/* <TextCountdownComponent /> */}
+            <TextCountdownComponent />
             {/* <Typography variant="body1" align="center" color="textSecondary">
               I hope you're ready to make pierogi with me <span> 😉 👩‍❤️‍💋‍👨</span>
             </Typography> */}
 
-            {/* <ProgressBarWithPhotos /> */}
+            <ProgressBarWithPhotos />
 
-            {/* <Typography variant="subtitle2" align="center">
-              I had to remake the progress bar for the new date, so it looks
-              like we are farther away, this this time the progress will move
-              faster 😉
+            <Typography variant="subtitle2" align="center">
+              This date is not totally certain, but probably around this time.
+              Maybe sooner, maybe later.
             </Typography>
             <Typography
               variant="body2"
@@ -97,15 +94,14 @@ export default function MainView() {
               paragraph
             >
               As time progresses, our photos will get closer and closer until we
-              meet face to face!
+              are together at last!
             </Typography>
             <Typography variant="subtitle2" align="center" gutterBottom>
               <span>📷</span> Click on one of our photos and see what happens!{' '}
               <span>📷</span>
-            </Typography> */}
+            </Typography>
             <Box className={classes.center}>
               <GiphyBox tag="cat" />
-              {/* <EmbededPreview /> */}
             </Box>
           </Container>
         </div>
